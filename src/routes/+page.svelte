@@ -10,13 +10,16 @@
         note: ''
     };
 
+    // ✅ Use your live backend URL here
+    const API_URL = 'https://backend-o5ll.onrender.com';
+
     async function loadTransactions() {
-        const res = await fetch('http://localhost:5000/api/transactions');
+        const res = await fetch(`${API_URL}/api/transactions`);
         transactions = await res.json();
     }
 
     async function addTransaction() {
-        await fetch('http://localhost:5000/api/transaction', {
+        await fetch(`${API_URL}/api/transaction`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form)
@@ -26,7 +29,7 @@
     }
 
     async function deleteTransaction(id) {
-        await fetch(`http://localhost:5000/api/transaction/${id}`, { method: 'DELETE' });
+        await fetch(`${API_URL}/api/transaction/${id}`, { method: 'DELETE' });
         loadTransactions();
     }
 
